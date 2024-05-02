@@ -1,0 +1,144 @@
+*{
+    padding:0;
+    margin:0;
+    border:0;
+}
+
+/*@font-face {
+    font-family: OpenSans, sans-serif;
+   /* src: url(../Fonts/OpenSans/OpenSans_SemiCondensed-Regular.ttf);*/
+
+header {
+    background-color: rgb(112, 42, 241);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+body {
+    background-color: rgb(160, 155, 236);
+    font-family:OpenSans, sans-serif;
+}
+header,
+main,
+footer
+
+{
+    padding: 10px;
+}
+
+
+.button {
+    text-decoration: none;
+    background-color: rgb(60, 46, 250);
+    padding: 10px;
+    color: rgb(247, 248, 248);
+
+    border-radius: 5px;
+    border-top-right-radius: 10px;
+
+    box-shadow: 5px 5px 5px rgba(0,0,0, 0.2);
+
+    transition: 0.2s all;
+}
+
+.button:hover {
+    background-color: rgb(112, 42, 241);
+    color: white;
+}
+#Contactanos{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-row-gap: 10px;
+    grid-column-gap:5px;
+
+    margin: 30px auto;
+    Background-color: rgb(160, 155, 236);
+    padding: 25px;
+}
+#formulario form {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-row-gap: 10px;
+    grid-column-gap:5px;
+    width: 30vw;
+    margin: 30 auto;
+    Background-color: rgb(160, 155, 236);
+    padding: 25px;
+}
+.imagen{
+    text-align:right;
+
+}
+.alineadorRight
+{
+    text-align:right;
+}
+*/
+
+#Contactanos form input[type="reset"], #Contactanos form input[type="submit"]{
+    border: none;
+}
+.titulo {
+    background-color: rgb(115, 115, 235);
+    padding: 25px;
+    padding-left: 10px;
+    font-size: 20px;
+    
+}
+
+i{
+    color: black;
+    transition: 0.2s all;
+}
+
+i:hover {
+    color: rgb(119, 116, 117);
+}
+footer{
+    background-color: rgb(115, 115, 235);
+    padding: 25px;
+       
+}
+ #mensajeError{
+    color: rgba(240, 7, 7, 0.74);
+    text-align: center;
+ }
+    
+
+footer p {
+    display:inline-block;
+    padding: 15px;
+
+}
+@media only screen and (max-width: 600px){
+    header, main, footer {
+        padding: 5px;
+    }
+
+    body {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    header, main, footer {
+        padding: 15px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    header, main, footer {
+        padding: 25px;
+    }
+}
