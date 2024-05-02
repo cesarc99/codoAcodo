@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operación</title>
+    <link rel="stylesheet" href="../CSS/Base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<!--    <script src="../JavaScript/Contactanos.js"></script> -->
+</head>
+<body>
+    <header>
+        <div id="Logo">
+            <a href="#Inicio">
+                <img src="../Src/images/Logo.webp" alt="">
+            </a>
+        </div>
+        <h1>Biblioteca On Line</h1>
+        <a id="Logout" class="button" href="../Index.html">Logout</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="Configuracion.html" class="button">Configuración</a></li>
+            <li><a href="Consultas.html" class="button">Consultas</a></li>
+            <li><a style="visibility: hidden;" href="Operacion.html" class="button">Operación</a></li>
+            <li><a href="Contactanos2.html" class="button">Contactanos</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1 class="titulo">Operación: Reservas y Devoluciones</h1>
+        <div class="row">
+	        <div class="column">
+                <section id="Usuarios">
+				    <p>Prestamo</p>
+                    <article id="formulario">
+                        <form action="" id="FormPrestamo">
+                            <label for="Libro_Id">Código de Libro</label>
+                            <input id="Libro_Id" name="Libro_Id" type="text">
+		        
+                            <label for="Libro_Titulo">Título del Libro</label>
+                            <input id="Libro_Titulo" name="Libro_Titulo" type="text">
+		        
+                            <label for="Libro_Autor">Autor</label>
+                            <input id="Libro_Autor" name="Libro_Autor" type="text">
+		        
+                            <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
+                            <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
+		        
+                            <input class="button" type="reset">
+                            <input class="button" type="submit">
+                        </form>
+                    </article>
+                </section>
+                <p id="mensajeErrorPrestamo"></p>
+		    </div>
+			<div class="column">
+                <section id="Libros">
+				    <p>Devolucion</p>
+                    <article id="formulario">
+                        <form action="" id="FormDevolucion">
+                            <label for="Libro_Id">Código de Libro</label>
+                            <input id="Libro_Id" name="Libro_Id" type="text">
+		        
+                            <label for="Libro_Titulo">Título del Libro</label>
+                            <input id="Libro_Titulo" name="Libro_Titulo" type="text">
+		        
+                            <label for="Libro_Autor">Autor</label>
+                            <input id="Libro_Autor" name="Libro_Autor" type="text">
+		        
+                            <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
+                            <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
+		        
+                            <input class="button" type="reset">
+                            <input class="button" type="submit">
+                        </form>
+                    </article>
+                </section>
+                <p id="mensajeErrorDevolucion"></p>          
+		    </div>
+		</div>
+    </main>
+    <footer>
+    <p>Seguinos en nuestras Redes Sociales</p>
+
+        <a href="https://wa.me/5491138707485?text=Consulta:" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/BNMMArgentina/?locale=es_LA" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/biblioteca_nacional_argentina/?hl=es" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/user/bibnal" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+
+    <p >Biblioteca Online 2024 - Todos los derechos reservados</p>
+    </footer>
+    
+</body>
+</html>
