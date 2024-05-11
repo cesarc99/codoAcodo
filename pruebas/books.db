@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "Titulo": "Cien años de soledad",
+    "Autor": "Gabriel García Márquez",
+    "Ubicacion": "Ubicacion 1"
+  },
+  {
+    "Id": 2,
+    "Titulo": "El señor de los anillos (Trilogía)",
+    "Autor": "J. R. R. Tolkien",
+    "Ubicacion": "Ubicacion 2"
+  },
+  {
+    "Id": 3,
+    "Titulo": "1984",
+    "Autor": "George Orwell",
+    "Ubicacion": "Ubicacion 3"
+  },
+  {
+    "Id": 4,
+    "Titulo": "Un mundo feliz",
+    "Autor": "Aldous Huxley",
+    "Ubicacion": "Ubicacion 4"
+  },
+  {
+    "Id": 5,
+    "Titulo": "Orgullo y prejuicio",
+    "Autor": "Jane Austen",
+    "Ubicacion": "Ubicacion 5"
+  },
+  {
+    "Id": 6,
+    "Titulo": "Crimen y castigo",
+    "Autor": "Fiódor Dostoyevski",
+    "Ubicacion": "Ubicacion 6"
+  },
+  {
+    "Id": 7,
+    "Titulo": "Lolita",
+    "Autor": "Vladimir Nabokov",
+    "Ubicacion": "Ubicacion 7"
+  },
+  {
+    "Id": 8,
+    "Titulo": "Ulises",
+    "Autor": "James Joyce",
+    "Ubicacion": "Ubicacion 8"
+  },
+  {
+    "Id": 9,
+    "Titulo": "Madame Bovary",
+    "Autor": "Gustave Flaubert",
+    "Ubicacion": "Ubicacion 9"
+  },
+  {
+    "Id": 10,
+    "Titulo": "En busca del tiempo perdido",
+    "Autor": "Marcel Proust",
+    "Ubicacion": "Ubicacion 10"
+  }
+]

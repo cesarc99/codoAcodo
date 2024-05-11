@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="alert(books);">books</button>
+<button onclick="alert(users);">users</button>
+<h2>Libros</h2>
+<p id="libros"></p>
+<h2>Usuarios</h2>
+<p id="usuarios"></p>
+<script>
+var books = [], users = [];
+
+getDatos("books.db", "libros");
+getDatos("users.db", "usuarios");
+
+
+async function getDatos(file, destino) {
+  let obj = await fetch(file);
+  let txt = await obj.text();
+  document.getElementById(destino).innerHTML = "<pre>" + txt + "</pre>";
+  if (destino == "libros") {
+    books = txt;
+  } else {
+    users = txt;
+  }
+}
+</script>
+
+</body>
+</html>
