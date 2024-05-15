@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-<button onclick="alert(books);">books</button>
-<button onclick="alert(users);">users</button>
+<button onclick="alert(JSON.stringify(books, null, 2));">books</button>
+<button onclick="alert(JSON.stringify(users, null, 2));">users</button>
 <h2>Libros</h2>
 <p id="libros"></p>
 <h2>Usuarios</h2>
@@ -15,14 +15,20 @@ getDatos("users.db", "usuarios");
 
 
 async function getDatos(file, destino) {
-  let obj = await fetch(file);
-  let txt = await obj.text();
-  document.getElementById(destino).innerHTML = "<pre>" + txt + "</pre>";
-  if (destino == "libros") {
-    books = txt;
-  } else {
-    users = txt;
-  }
+    var txt;
+    fetch("https://simuladordatosddd.netlify.app/db/" + file)
+    .then(response => response.json())
+    .then(data => {
+	      txt = JSON.stringify(data, null, 2);
+          document.getElementById(destino).innerHTML = "<pre>" + txt + "</pre>";
+            if (destino == "libros") {
+              books = data;
+            } else {
+              users = data;
+            }
+          }
+	)
+    .catch(error => console.log("Ocurrió un error! " + error));
 }
 </script>
 
