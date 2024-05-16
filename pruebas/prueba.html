@@ -16,7 +16,7 @@ getDatos("users.db", "usuarios");
 
 async function getDatos(file, destino) {
     var txt;
-    fetch("https://simuladordatosddd.netlify.app/db/" + file)
+    fetch("https://simuladordatos.netlify.app/db/" + file)
     .then(response => response.json())
     .then(data => {
 	      txt = JSON.stringify(data, null, 2);
