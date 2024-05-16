@@ -41,9 +41,11 @@ footer
     padding: 10px;
 }
 
+/*
 header #Logo img {
     width: 100px;
 }
+*/
 
 nav {
     background-color: rgb(112, 42, 241);
