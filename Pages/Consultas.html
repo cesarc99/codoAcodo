@@ -7,16 +7,16 @@
 	<link rel="icon" type="image/x-icon" href="/src/images/favicon.ico">
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<!--    <script src="../JavaScript/Contactanos.js"></script> -->
+    <script src="../JavaScript/Base.js"></script>
 </head>
 <body>
     <header>
         <div id="Logo">
             <a href="#Inicio">
-                <img src="../Src/images/LogoCYSb.png" alt="" width="107" height="110">
+                <img src="../Src/images/LogoBiblio.png" alt="">
             </a>
         </div>
-        <h1>Biblioteca On Line</h1>
+        <h1>BIBLIOTECA CIENCIA Y SUDOR</h1>
         <a id="Logout" class="button" href="../Index.html">Logout</a>
     </header>
     <nav>
@@ -28,60 +28,38 @@
         </ul>
     </nav>
     <main>
-        <h1 class="titulo">Consultas: Libros Dsiponibles y Libros Prestados</h1>
+        <h1 class="titulo">Consultas: Libros Disponibles y Libros Prestados</h1>
         <div class="row">
-	        <div class="column">
+	        <div class="columnBorder">
                 <section id="Disponibles">
-				    <p>Libros Disponibles</p>
+				    <p style="text-align:center; font-weight:bold;">Libros Disponibles</p>
 				    <article>
                         <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
+	                        <div class="columnBorder">
+							    Código
 					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Título
 					        </div>
-	                        <div class="column">
-							    Ubicación
-					        </div>
-                        </div> 
-                        <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
-					        </div>
-	                        <div class="column">
-							    Título
-					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Ubicación
 					        </div>
                         </div> 
 					</article>
                 </section>
 		    </div>
-			<div class="column">
+			<div class="columnBorder">
                 <section id="Prestados">
-				    <p>Libros Prestados</p>
+				    <p style="text-align:center; font-weight:bold;">Libros Prestados</p>
 				    <article>
                         <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
+	                        <div class="columnBorder">
+							    Código
 					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Título
 					        </div>
-	                        <div class="column">
-							    Ubicación
-					        </div>
-                        </div> 
-                        <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
-					        </div>
-	                        <div class="column">
-							    Título
-					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Ubicación
 					        </div>
                         </div> 
@@ -98,8 +76,15 @@
         <a href="https://www.instagram.com/biblioteca_nacional_argentina/?hl=es" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.youtube.com/user/bibnal" target="_blank"><i class="fa-brands fa-youtube"></i></a>
 
-    <p >Biblioteca Online 2024 - Todos los derechos reservados</p>
+    <p >Biblioteca Online Ciencia y Sudor 2024 - Todos los derechos reservados</p>
     </footer>
-    
+    <script src="../JavaScript/Consulta.js"></script>
+    <script>
+      if (document.hasFocus()) {
+	    getDatos("books.db", "libros");
+        listSection("Disponibles");
+        listSection("Prestados");
+	  }
+	</script>	
 </body>
 </html>

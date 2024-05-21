@@ -7,16 +7,16 @@
 	<link rel="icon" type="image/x-icon" href="/src/images/favicon.ico">
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<!--    <script src="../JavaScript/Contactanos.js"></script> -->
+    <script src="../JavaScript/Base.js"></script>
 </head>
 <body>
     <header>
         <div id="Logo">
             <a href="#Inicio">
-                <img src="../Src/images/LogoCYSb.png" alt="" width="107" height="110">
+                <img src="../Src/images/LogoBiblio.png" alt="">
             </a>
         </div>
-        <h1>Biblioteca On Line</h1>
+        <h1>BIBLIOTECA ONLINE CIENCIA Y SUDOR</h1>
         <a id="Logout" class="button" href="../Index.html">Logout</a>
     </header>
     <nav>
@@ -32,7 +32,7 @@
         <div class="row">
 	        <div class="column">
                 <section id="Usuarios">
-				    <p>Prestamo</p>
+				    <p style="text-align:center; font-weight:bold;">Préstamo</p>
                     <article id="formulario">
                         <form action="" id="FormPrestamo">
                             <label for="Libro_Id">Código de Libro</label>
@@ -44,11 +44,11 @@
                             <label for="Libro_Autor">Autor</label>
                             <input id="Libro_Autor" name="Libro_Autor" type="text">
 		        
-                            <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
+                            <label for="Libro_Ubicacion">Ubicación en la Biblioteca</label>
                             <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
 		        
-                            <input class="button" type="reset">
-                            <input class="button" type="submit">
+                            <input class="button" type="reset"  value="Borrar">
+                            <input class="button" type="button" value="Confirmar" onclick="alert('prestamo')">
                         </form>
                     </article>
                 </section>
@@ -56,7 +56,7 @@
 		    </div>
 			<div class="column">
                 <section id="Libros">
-				    <p>Devolucion</p>
+				    <p style="text-align:center; font-weight:bold;">Devolución</p>
                     <article id="formulario">
                         <form action="" id="FormDevolucion">
                             <label for="Libro_Id">Código de Libro</label>
@@ -71,8 +71,8 @@
                             <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
                             <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
 		        
-                            <input class="button" type="reset">
-                            <input class="button" type="submit">
+                            <input class="button" type="reset"  value="Borrar">
+                            <input class="button" type="button" value="Confirmar" onclick="alert('devolucion')">
                         </form>
                     </article>
                 </section>
@@ -88,7 +88,7 @@
         <a href="https://www.instagram.com/biblioteca_nacional_argentina/?hl=es" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.youtube.com/user/bibnal" target="_blank"><i class="fa-brands fa-youtube"></i></a>
 
-    <p >Biblioteca Online 2024 - Todos los derechos reservados</p>
+    <p >Biblioteca Online Ciencia y Sudor 2024 - Todos los derechos reservados</p>
     </footer>
     
 </body>

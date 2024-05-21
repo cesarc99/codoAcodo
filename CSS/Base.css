@@ -1,12 +1,8 @@
-*{
+* {
     padding:0;
     margin:0;
     border:0;
 }
-
-/*@font-face {
-    font-family: OpenSans, sans-serif;
-   /* src: url(../Fonts/OpenSans/OpenSans_SemiCondensed-Regular.ttf);*/
 
 header {
     background-color: rgb(112, 42, 241);
@@ -41,11 +37,10 @@ footer
     padding: 10px;
 }
 
-/*
 header #Logo img {
-    width: 100px;
+    width: 120px;
+    height: auto;
 }
-*/
 
 nav {
     background-color: rgb(112, 42, 241);
@@ -68,6 +63,11 @@ nav ul li a {
     margin-right: 10px;
 }
 
+section.row div {
+    background-color: chocolate;
+    border: 1px solid black;
+}
+
 .button {
     text-decoration: none;
     background-color: rgb(60, 46, 250);
@@ -87,12 +87,13 @@ nav ul li a {
     color: white;
 }
 #Contactanos{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-row-gap: 10px;
-    grid-column-gap:5px;
-
-    margin: 30px auto;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    justify-items:center;
+    /*width: 30vp auto;
+    margin: 30px auto;*/
     Background-color: rgb(160, 155, 236);
     padding: 25px;
 }
@@ -102,19 +103,15 @@ nav ul li a {
     grid-row-gap: 10px;
     grid-column-gap:5px;
     width: 30vw;
-    margin: 30 auto;
+    /*margin: 30 auto;*/
     Background-color: rgb(160, 155, 236);
-    padding: 25px;
+    padding: 15px;
 }
-.imagen{
-    text-align:right;
-
-}
-.alineadorRight
+/*.alineadorRight
 {
     text-align:right;
 }
-
+*/
 .row {
   display: flex;
 }
@@ -124,10 +121,17 @@ nav ul li a {
   padding: 10px;
 }
 
+.columnBorder {
+  border: 1px solid;
+  flex: 50%;
+  padding: 5px;
+}
+
 
 #Contactanos form input[type="reset"], #Contactanos form input[type="submit"]{
     border: none;
 }
+
 .titulo {
     background-color: rgb(115, 115, 235);
     padding: 25px;
@@ -136,7 +140,7 @@ nav ul li a {
     
 }
 
-i{
+i {
     color: black;
     transition: 0.2s all;
 }
@@ -144,11 +148,13 @@ i{
 i:hover {
     color: rgb(119, 116, 117);
 }
+
 footer{
     background-color: rgb(115, 115, 235);
     padding: 25px;
        
 }
+
  #mensajeError{
     color: rgba(240, 7, 7, 0.74);
     text-align: center;
@@ -160,6 +166,7 @@ footer p {
     padding: 15px;
 
 }
+
 @media only screen and (max-width: 600px){
     header, main, footer {
         padding: 5px;
@@ -167,21 +174,43 @@ footer p {
 
     body {
         font-size: 10px;
+        
     }
-}
+
+    article {
+       
+        width: 0%;
+    }
+    .imagen img {
+          
+         width:0%;
+                
+    }
+
+}      
+
 
 @media only screen and (min-width: 600px) {
     header, main, footer {
-        padding: 15px;
+        padding: 10px;
+        
     }
 
     body {
         font-size: 16px;
     }
+.imagen img{
+    width: 40%;
+}
+
 }
 
 @media only screen and (min-width: 900px) {
     header, main, footer {
         padding: 25px;
     }
+   .imagen img{
+    width: 300px;
+   }
+  
 }

@@ -7,16 +7,16 @@
 	<link rel="icon" type="image/x-icon" href="/src/images/favicon.ico">
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="../JavaScript/Contactanos.js"></script>
+    <script src="../JavaScript/Base.js"></script>
 </head>
 <body>
     <header>
         <div id="Logo">
             <a href="#Inicio">
-                <img src="../Src/images/LogoCYSb.png" alt="" width="107" height="110">
+                <img src="../Src/images/LogoBiblio.png" alt="" >
             </a>
         </div>
-        <h1>Biblioteca On Line</h1>
+        <h1>BIBLIOTECA ONLINE CIENCIA Y SUDOR</h1>
         <a id="Logout" class="button" href="../Index.html">Logout</a>
     </header>
     <nav>
@@ -31,29 +31,18 @@
     <main>
         <h1 class="titulo">Configuración: Mantenimiento de Usuarios y Catálogo</h1>
         <div class="row">
-	        <div class="column">
+	        <div class="columnBorder">
                 <section id="Usuarios">
-				    <p>Usuarios</p>
+				    <p style="text-align:center; font-weight:bold;">Usuarios</p>
 				    <article>
                         <div class="row">
-	                        <div class="column">
-							    Codigo de Usuario
+	                        <div class="columnBorder">
+							    Código
 					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Nombre y Apellido
 					        </div>
-	                        <div class="column">
-							    Contacto
-					        </div>
-                        </div> 
-                        <div class="row">
-	                        <div class="column">
-							    Codigo de Usuario
-					        </div>
-	                        <div class="column">
-							    Nombre y Apellido
-					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Contacto
 					        </div>
                         </div> 
@@ -72,36 +61,25 @@
                             <label for="Usuario_Contacto">Contacto</label>
                             <input id="Usuario_Contacto" name="Usuario_Contacto" type="text">
 		        
-                            <input class="button" type="reset">
-                            <input class="button" type="submit">
+                            <input class="button" type="reset"  value="Borrar">
+                            <input class="button" type="button" value="Confirmar" onclick="alert('usuario')">
                         </form>
                     </article>
                 </section>
                 <p id="mensajeErrorUsuario"></p>
 		    </div>
-			<div class="column">
+			<div class="columnBorder">
                 <section id="Libros">
-				    <p>Libros</p>
+				    <p style="text-align:center; font-weight:bold;">Libros</p>
 				    <article>
                         <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
+	                        <div class="columnBorder">
+							    Código
 					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Título
 					        </div>
-	                        <div class="column">
-							    Ubicación
-					        </div>
-                        </div> 
-                        <div class="row">
-	                        <div class="column">
-							    Codigo de Libro
-					        </div>
-	                        <div class="column">
-							    Título
-					        </div>
-	                        <div class="column">
+	                        <div class="columnBorder">
 							    Ubicación
 					        </div>
                         </div> 
@@ -120,8 +98,8 @@
                             <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
                             <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
 		        
-                            <input class="button" type="reset">
-                            <input class="button" type="submit">
+                            <input class="button" type="reset"  value="Borrar">
+                            <input class="button" type="button" value="Confirmar" onclick="alert('libro')">
                         </form>
                     </article>
                 </section>
@@ -137,8 +115,16 @@
         <a href="https://www.instagram.com/biblioteca_nacional_argentina/?hl=es" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.youtube.com/user/bibnal" target="_blank"><i class="fa-brands fa-youtube"></i></a>
 
-    <p >Biblioteca Online 2024 - Todos los derechos reservados</p>
+    <p >Biblioteca Online Ciencia y Sudor 2024 - Todos los derechos reservados</p>
     </footer>
-    
+    <script src="../JavaScript/Configuracion.js"></script>
+    <script>
+      if (document.hasFocus()) {
+        getDatos("books.db", "libros");
+        getDatos("users.db", "usuarios");
+        listSection("Usuarios");
+        listSection("Libros");
+	  }
+	</script>	
 </body>
 </html>
