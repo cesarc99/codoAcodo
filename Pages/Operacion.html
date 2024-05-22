@@ -31,21 +31,21 @@
         <h1 class="titulo">Operación: Reservas y Devoluciones</h1>
         <div class="row">
 	        <div class="column">
-                <section id="Usuarios">
-				    <p style="text-align:center; font-weight:bold;">Préstamo</p>
-                    <article id="formulario">
-                        <form action="" id="FormPrestamo">
-                            <label for="Libro_Id">Código de Libro</label>
-                            <input id="Libro_Id" name="Libro_Id" type="text">
+                <section id="Libros_P">
+				    <h3 style="text-align:center;">Préstamo</h3>
+                    <article class="formulario">
+                        <form id="FormPrestamo">
+                            <label for="Libro_Id_P">Código de Libro</label>
+                            <input id="Libro_Id_P" name="Libro_Id_P" type="text">
 		        
-                            <label for="Libro_Titulo">Título del Libro</label>
-                            <input id="Libro_Titulo" name="Libro_Titulo" type="text">
+                            <label for="Libro_Titulo_P">Título del Libro</label>
+                            <input id="Libro_Titulo_P" name="Libro_Titulo_P" type="text">
 		        
-                            <label for="Libro_Autor">Autor</label>
-                            <input id="Libro_Autor" name="Libro_Autor" type="text">
+                            <label for="Libro_Autor_P">Autor</label>
+                            <input id="Libro_Autor_P" name="Libro_Autor_P" type="text">
 		        
-                            <label for="Libro_Ubicacion">Ubicación en la Biblioteca</label>
-                            <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
+                            <label for="Libro_Ubicacion_P">Ubicación en la Biblioteca</label>
+                            <input id="Libro_Ubicacion_P" name="Libro_Ubicacion_P" type="text">
 		        
                             <input class="button" type="reset"  value="Borrar">
                             <input class="button" type="button" value="Confirmar" onclick="alert('prestamo')">
@@ -55,21 +55,21 @@
                 <p id="mensajeErrorPrestamo"></p>
 		    </div>
 			<div class="column">
-                <section id="Libros">
-				    <p style="text-align:center; font-weight:bold;">Devolución</p>
-                    <article id="formulario">
-                        <form action="" id="FormDevolucion">
-                            <label for="Libro_Id">Código de Libro</label>
-                            <input id="Libro_Id" name="Libro_Id" type="text">
+                <section id="Libros_D">
+				    <h3 style="text-align:center;">Devolución</h3>
+                    <article class="formulario">
+                        <form id="FormDevolucion">
+                            <label for="Libro_Id_D">Código de Libro</label>
+                            <input id="Libro_Id_D" name="Libro_Id_D" type="text">
 		        
-                            <label for="Libro_Titulo">Título del Libro</label>
-                            <input id="Libro_Titulo" name="Libro_Titulo" type="text">
+                            <label for="Libro_Titulo_D">Título del Libro</label>
+                            <input id="Libro_Titulo_D" name="Libro_Titulo_D" type="text">
 		        
-                            <label for="Libro_Autor">Autor</label>
-                            <input id="Libro_Autor" name="Libro_Autor" type="text">
+                            <label for="Libro_Autor_D">Autor</label>
+                            <input id="Libro_Autor_D" name="Libro_Autor_D" type="text">
 		        
-                            <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
-                            <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
+                            <label for="Libro_Ubicacion_D">Ubicación en la Bilioteca</label>
+                            <input id="Libro_Ubicacion_D" name="Libro_Ubicacion_D" type="text">
 		        
                             <input class="button" type="reset"  value="Borrar">
                             <input class="button" type="button" value="Confirmar" onclick="alert('devolucion')">

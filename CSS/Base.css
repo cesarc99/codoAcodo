@@ -97,21 +97,16 @@ section.row div {
     Background-color: rgb(160, 155, 236);
     padding: 25px;
 }
-#formulario form {
+.formulario form {
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-row-gap: 10px;
     grid-column-gap:5px;
     width: 30vw;
-    /*margin: 30 auto;*/
     Background-color: rgb(160, 155, 236);
     padding: 15px;
 }
-/*.alineadorRight
-{
-    text-align:right;
-}
-*/
+
 .row {
   display: flex;
 }
@@ -125,6 +120,16 @@ section.row div {
   border: 1px solid;
   flex: 50%;
   padding: 5px;
+}
+
+.imagen{
+    text-align:right;
+
+}
+
+.alineadorRight
+{
+    text-align:right;
 }
 
 
@@ -155,7 +160,11 @@ footer{
        
 }
 
- #mensajeError{
+#mensajeErrorLibro,
+#mensajeErrorUsuario,
+#mensajeErrorPrestamo,
+#mensajeErrorDevolucion,
+#mensajeError{
     color: rgba(240, 7, 7, 0.74);
     text-align: center;
  }
