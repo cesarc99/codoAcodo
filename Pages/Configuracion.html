@@ -49,7 +49,22 @@
 					</article>
                     <article class="formulario"><br>
 						<h3 style="text-align:center;">Actualización de Usuarios</h3>
+						    <div class="row">
+							<div class="column">
+						    <input type="radio" id="add_U" name="user_action" value="add_U">
+                            <label for="add_U">Alta</label>
+							</div>
+							<div class="column">
+                            <input type="radio" id="del_U" name="user_action" value="del_U">
+                            <label for="del_U">Baja</label>
+							</div>
+							<div class="column">
+                            <input type="radio" id="upd_U" name="user_action" value="upd_U">
+                            <label for="upd_U">Modificación</label>
+							</div>
+							</div>
                         <form id="FormUsuarios">
+
                             <label for="Usuario_Id">Código de Usuario</label>
                             <input id="Usuario_Id" name="Usuario_Id" type="text">
 		        
@@ -63,7 +78,7 @@
                             <input id="Usuario_Contacto" name="Usuario_Contacto" type="text">
 		        
                             <input class="button" type="reset"  value="Borrar">
-                            <input class="button" type="button" value="Confirmar" onclick="alert('usuario')">
+                            <input id="btnConfirmaUser" class="button" type="button" value="Confirmar">
                         </form>
                     </article>
                 </section>
@@ -87,6 +102,20 @@
 					</article>
                     <article class="formulario"><br>
 						<h3 style="text-align:center;">Actualización de Libros</h3>
+						    <div class="row">
+							<div class="column">
+						    <input type="radio" id="add_B" name="book_action" value="add_B">
+                            <label for="add_B">Alta</label>
+							</div>
+							<div class="column">
+                            <input type="radio" id="del_B" name="book_action" value="del_B">
+                            <label for="del_B">Baja</label>
+							</div>
+							<div class="column">
+                            <input type="radio" id="upd_B" name="book_action" value="upd_B">
+                            <label for="upd_B">Modificación</label>
+							</div>
+							</div>
                         <form id="FormLibros">
                             <label for="Libro_Id">Código de Libro</label>
                             <input id="Libro_Id" name="Libro_Id" type="text">
@@ -101,7 +130,7 @@
                             <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
 		        
                             <input class="button" type="reset"  value="Borrar">
-                            <input class="button" type="button" value="Confirmar" onclick="alert('libro')">
+                            <input id="btnConfirmaBook" class="button" type="button" value="Confirmar">
                         </form>
                     </article>
                 </section>

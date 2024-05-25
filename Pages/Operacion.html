@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,50 +31,46 @@
         <h1 class="titulo">Operación: Reservas y Devoluciones</h1>
         <div class="row">
 	        <div class="column">
-                <section id="Libros_P">
-				    <h3 style="text-align:center;">Préstamo</h3>
-                    <article class="formulario">
-                        <form id="FormPrestamo">
-                            <label for="Libro_Id_P">Código de Libro</label>
-                            <input id="Libro_Id_P" name="Libro_Id_P" type="text">
-		        
-                            <label for="Libro_Titulo_P">Título del Libro</label>
-                            <input id="Libro_Titulo_P" name="Libro_Titulo_P" type="text">
-		        
-                            <label for="Libro_Autor_P">Autor</label>
-                            <input id="Libro_Autor_P" name="Libro_Autor_P" type="text">
-		        
-                            <label for="Libro_Ubicacion_P">Ubicación en la Biblioteca</label>
-                            <input id="Libro_Ubicacion_P" name="Libro_Ubicacion_P" type="text">
-		        
-                            <input class="button" type="reset"  value="Borrar">
-                            <input class="button" type="button" value="Confirmar" onclick="alert('prestamo')">
-                        </form>
-                    </article>
+                <section id="Libros_Prestamo">
+				    <h3 style="text-align:center;">Disponibles para Préstamo</h3>
+				    <article>
+                        <div class="row">
+	                        <div class="columnBorder">
+							    Código
+					        </div>
+	                        <div class="columnBorder">
+							    Título
+					        </div>
+	                        <div class="columnBorder">
+							    Ubicación
+					        </div>
+	                        <div class="columnBorder">
+							    Prestar
+					        </div>
+                        </div> 
+					</article>
                 </section>
                 <p id="mensajeErrorPrestamo"></p>
 		    </div>
 			<div class="column">
-                <section id="Libros_D">
-				    <h3 style="text-align:center;">Devolución</h3>
-                    <article class="formulario">
-                        <form id="FormDevolucion">
-                            <label for="Libro_Id_D">Código de Libro</label>
-                            <input id="Libro_Id_D" name="Libro_Id_D" type="text">
-		        
-                            <label for="Libro_Titulo_D">Título del Libro</label>
-                            <input id="Libro_Titulo_D" name="Libro_Titulo_D" type="text">
-		        
-                            <label for="Libro_Autor_D">Autor</label>
-                            <input id="Libro_Autor_D" name="Libro_Autor_D" type="text">
-		        
-                            <label for="Libro_Ubicacion_D">Ubicación en la Bilioteca</label>
-                            <input id="Libro_Ubicacion_D" name="Libro_Ubicacion_D" type="text">
-		        
-                            <input class="button" type="reset"  value="Borrar">
-                            <input class="button" type="button" value="Confirmar" onclick="alert('devolucion')">
-                        </form>
-                    </article>
+                <section id="Libros_Devolucion">
+				    <h3 style="text-align:center;">Prestados para Devolución</h3>
+				    <article>
+                        <div class="row">
+	                        <div class="columnBorder">
+							    Código
+					        </div>
+	                        <div class="columnBorder">
+							    Título
+					        </div>
+	                        <div class="columnBorder">
+							    Ubicación
+					        </div>
+	                        <div class="columnBorder">
+							    Devolver
+					        </div>
+                        </div> 
+					</article>
                 </section>
                 <p id="mensajeErrorDevolucion"></p>          
 		    </div>
@@ -90,6 +86,13 @@
 
     <p >Biblioteca Online Ciencia y Sudor 2024 - Todos los derechos reservados</p>
     </footer>
-    
+    <script src="../JavaScript/Operacion.js"></script>
+    <script>
+      if (document.hasFocus()) {
+	    getDatos("books.db", "libros");
+        listSection("Libros_Prestamo");
+        listSection("Libros_Devolucion");
+	  }
+	</script>	
 </body>
 </html>

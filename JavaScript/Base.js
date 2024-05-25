@@ -9,7 +9,7 @@ class Book {
     this.Disponible = Disponible;
   }
   toStringArray() {
-    return "[ " + this.Id + ", " + this.Titulo + ", " + this.Autor + ", " + this.Ubicacion + this.Disponible + " ]"; 
+    return "[ " + this.Id + ", " + this.Titulo + ", " + this.Autor + ", " + this.Ubicacion + ", " + this.Disponible + " ]"; 
   }
 }
 
@@ -20,7 +20,7 @@ class User {
     this.Direccion = Direccion;
     this.Contacto  = Contacto; 
   }
-  toString() {
+  toStringArray() {
     return "[ " + this.Id + ", " + this.NomApe + ", " + this.Direccion + ", " + this.Contacto + " ]"; 
   }
 }
@@ -32,11 +32,13 @@ class User {
 function del(tabObj, tipoObj, clave) {
   var respuesta = {"msg": "", "sts": 0};
   var idx = tabObj.findIndex(e => e.Id == clave);
-  var unObj;
+  var unObj, txt;
   if (idx > -1) {
     unObj = tabObj[idx];
+    txt = Object.values(unObj).toString();
+    txt = txt.replaceAll(",",", ");
     tabObj.splice(idx, 1);
-    respuesta.msg = "Baja exitosa de " + tipoObj + ": " + unObj.toString();
+    respuesta.msg = "Baja exitosa de " + tipoObj + ": " + txt;
     respuesta.sts = 0;
   } else {
     respuesta.msg = "No existe " + tipoObj + " con clave: " + clave;
@@ -50,7 +52,7 @@ function upd(tabObj, tipoObj, clase) {
   var idx = tabObj.findIndex(e => e.Id == clase.Id);
   if (idx > -1) {
     tabObj[idx] = clase;
-    respuesta.msg = "Modificación exitosa de " + tipoObj + ": " + clase.toString();
+    respuesta.msg = "Modificación exitosa de " + tipoObj + ": " + clase.toStringArray();
     respuesta.sts = 0;
   } else {
     respuesta.msg = "No existe " + tipoObj + " con clave: " + clase.Id;
@@ -63,14 +65,37 @@ function upd(tabObj, tipoObj, clase) {
 function add(tabObj, tipoObj, clase) {
   var respuesta = {"msg": "", "sts": 0};
   var idx = tabObj.findIndex(e => e.Id == clase.Id);
-  var unObj;
+  var unObj, txt;
   if (idx < 0) {
     tabObj.splice(tabObj.length, 0, clase);
-    respuesta.msg = "Alta exitosa de " + tipoObj + ": " + clase.toString();
+    respuesta.msg = "Alta exitosa de " + tipoObj + ": " + clase.toStringArray();
     respuesta.sts = 0;
   } else {
     unObj = tabObj[idx];
-    respuesta.msg = "Ya existe " + tipoObj + ": " + unObj.toString();
+    txt = Object.values(unObj).toString();
+    txt = txt.replaceAll(",",", ");
+    respuesta.msg = "Ya existe " + tipoObj + ": " + txt;
+    respuesta.sts = 1;
+  }
+  return respuesta;
+}
+
+function stsDevPres(tabObj, tipoObj, clave) {
+  var respuesta = {"msg": "", "sts": 0, "devolucion": false};
+  var idx = tabObj.findIndex(e => e.Id == clave);
+  var unObj, txt;
+  if (idx > -1) {
+    unObj = tabObj[idx];
+	sts = unObj["Disponible"] ? "Préstamo exitoso de " : "Devolución exitosa de ";
+	respuesta.devolucion = unObj["Disponible"] ? true : false;
+	unObj["Disponible"] = !unObj["Disponible"];
+	tabObj[idx] = unObj;
+    txt = Object.values(unObj).toString();
+    txt = txt.replaceAll(",",", ");
+    respuesta.msg = sts + tipoObj + ": " + txt;
+    respuesta.sts = 0;
+  } else {
+    respuesta.msg = "No existe " + tipoObj + " con clave: " + clave;
     respuesta.sts = 1;
   }
   return respuesta;
