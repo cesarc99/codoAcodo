@@ -40,8 +40,20 @@ footer
 header #Logo img {
     width: 120px;
     height: auto;
+    position: relative;
+    animation-name: girar;
+    animation-duration: 4s;
+    animation-iteration-count: 5;
 }
-
+  @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  
 nav {
     background-color: rgb(112, 42, 241);
 
