@@ -1,6 +1,49 @@
 # codoAcodo
 Phyton full stack
 
+-- 2024-06-04
+
+Definiciones para el backend
+
+A continuación están son las clases definidas para libros y usuarios
+
+Hay que hacer el script correspondiente para la creación de las tablas Books y Users en PostgreSQL con los campos definidos en las clases
+
+Esto lo ponemos en la carpeta pruebas, le ponemos script_DB_Cesar.txt o script_DB_Maria.txt o script_DB_Juan.txt
+
+Luego nos quedamos con uno.
+
+
+class Book {
+  constructor(Id, Titulo, Autor, Ubicacion, Disponible) {
+    this.Id = Id;
+    this.Titulo = Titulo;
+    this.Autor = Autor;
+    this.Ubicacion = Ubicacion;
+    this.Disponible = Disponible;
+  }
+  toStringArray() {
+    return "[ " + this.Id + ", " + this.Titulo + ", " + this.Autor + ", " + this.Ubicacion + ", " + this.Disponible + " ]"; 
+  }
+}
+
+class User {
+  constructor(Id, NomApe, Direccion, Contacto) {
+    this.Id        = Id;       
+    this.NomApe    = NomApe;   
+    this.Direccion = Direccion;
+    this.Contacto  = Contacto; 
+  }
+  toStringArray() {
+    return "[ " + this.Id + ", " + this.NomApe + ", " + this.Direccion + ", " + this.Contacto + " ]"; 
+  }
+}
+
+
+
+
+-- anterior
+
 Información del curso
 
 Meet: https://meet.google.com/evn-reno-qxh
@@ -116,3 +159,4 @@ tiene los datos:
 Usuario_Id, Usuario_NomApe, Usuario_Direccion, Usuario_Contacto
 
 - - - - - - - - -
+
