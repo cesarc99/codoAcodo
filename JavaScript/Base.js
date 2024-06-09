@@ -32,13 +32,18 @@ class User {
 function del(tabObj, tipoObj, clave) {
   var respuesta = {"msg": "", "sts": 0};
   var idx = tabObj.findIndex(e => e.Id == clave);
-  var unObj, txt;
+  var unObj, txt, wClase;
   if (idx > -1) {
     unObj = tabObj[idx];
     txt = Object.values(unObj).toString();
-    txt = txt.replaceAll(",",", ");
+	txt = txt.split(",");
+	if (tipoObj == "User") {
+		wClase = new User(txt[0], txt[1], txt[2], txt[3]);
+	} else {
+		wClase = new Book(txt[0], txt[1], txt[2], txt[3], txt[4]);
+	}
     tabObj.splice(idx, 1);
-    respuesta.msg = "Baja exitosa de " + tipoObj + ": " + txt;
+    respuesta.msg = "Baja exitosa de " + tipoObj + ": " + wClase.toStringArray();
     respuesta.sts = 0;
   } else {
     respuesta.msg = "No existe " + tipoObj + " con clave: " + clave;
@@ -65,7 +70,7 @@ function upd(tabObj, tipoObj, clase) {
 function add(tabObj, tipoObj, clase) {
   var respuesta = {"msg": "", "sts": 0};
   var idx = tabObj.findIndex(e => e.Id == clase.Id);
-  var unObj, txt;
+  var unObj, txt, wClase;
   if (idx < 0) {
     tabObj.splice(tabObj.length, 0, clase);
     respuesta.msg = "Alta exitosa de " + tipoObj + ": " + clase.toStringArray();
@@ -73,8 +78,13 @@ function add(tabObj, tipoObj, clase) {
   } else {
     unObj = tabObj[idx];
     txt = Object.values(unObj).toString();
-    txt = txt.replaceAll(",",", ");
-    respuesta.msg = "Ya existe " + tipoObj + ": " + txt;
+	txt = txt.split(",");
+	if (tipoObj == "User") {
+		wClase = new User(txt[0], txt[1], txt[2], txt[3]);
+	} else {
+		wClase = new Book(txt[0], txt[1], txt[2], txt[3], txt[4]);
+	}
+    respuesta.msg = "Ya existe " + tipoObj + ": " + wClase.toStringArray();
     respuesta.sts = 1;
   }
   return respuesta;

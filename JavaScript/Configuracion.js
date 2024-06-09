@@ -5,25 +5,37 @@ var Books = [], unBook, Users = [], unUser;
 function listSection(Section) {
   const nodoSection = document.getElementById(Section);
   const nodoArticle = nodoSection.children[1];
-  var nodoBook, nodoUser;
+  var nodoBook, nodoUser, tableBooks, tableUsers;
   if (Section == "Libros"){
+	tableBooks = "<table><tr><th>Código</th><th>Título</th><th>Ubicación</th></tr>";
     for (let i = 0; i < Books.length; i++){
       unBook = Books[i];
+	  tableBooks += "<tr><td>" + unBook["Id"] + "</td><td>" + unBook["Titulo"] + "</td><td>" +  unBook["Ubicacion"] + "</td></tr>";
+/*
       nodoBook = nodoArticle.children[0].cloneNode(true);
       nodoBook.children[0].innerText = unBook["Id"];
       nodoBook.children[1].innerText = unBook["Titulo"];
       nodoBook.children[2].innerText = unBook["Ubicacion"];
       nodoArticle.appendChild(nodoBook);
+*/
 	}
+	tableBooks += "</table>";
+	nodoArticle.innerHTML = tableBooks;
   } else {
+	tableUsers = "<table><tr><th>Código</th><th>Nombre y Apellido</th><th>Contacto</th></tr>";
     for (let i = 0; i < Users.length; i++){
       unUser = Users[i];
+	  tableUsers += "<tr><td>" + unUser["Id"] + "</td><td>" + unUser["NomApe"] + "</td><td>" +  unUser["Contacto"] + "</td></tr>";
+/*
       nodoUser = nodoArticle.children[0].cloneNode(true);
       nodoUser.children[0].innerText = unUser["Id"];
       nodoUser.children[1].innerText = unUser["NomApe"];
       nodoUser.children[2].innerText = unUser["Contacto"];
       nodoArticle.appendChild(nodoUser);
+*/
 	}
+	tableUsers += "</table>";
+	nodoArticle.innerHTML = tableUsers;
   }
 }
 
@@ -75,7 +87,7 @@ function procUser() {
   if (respuesta.sts == 0) {
 	objBtn.checked = false;
 	document.getElementById("FormUsuarios").reset();
-    delSection("Usuarios");
+//    delSection("Usuarios");
     listSection("Usuarios");
   }
   
@@ -109,7 +121,7 @@ function procBook() {
   if (respuesta.sts == 0) {
 	objBtn.checked = false;
 	document.getElementById("FormLibros").reset();
-    delSection("Libros");
+//    delSection("Libros");
     listSection("Libros");
   }
   
