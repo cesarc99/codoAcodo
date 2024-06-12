@@ -127,3 +127,23 @@ async function getDatos(file, destino) {
   )
   .catch(error => console.log("Ocurrió un error! " + destino + " " + error));
 }
+
+function disableEnableElements(elems, boolValue){
+  for (elem of elems){
+	  document.getElementById(elem).disabled = boolValue;
+  }
+}
+
+function elemForm(formId) {
+  var obj, arr, arrId = []; 
+  obj = document.getElementById(formId);
+  arr = Array.from(obj.elements);
+  for (tag of arr){
+  	if (tag.id){
+	  arrId.push(tag.id);
+	}
+  }
+  return arrId;
+}
+
+

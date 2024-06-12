@@ -2,6 +2,43 @@
 
 var Books = [], unBook, Users = [], unUser;
 
+document.getElementById("btnConfirmaUser").addEventListener("click", procUser);
+document.getElementById("btnConfirmaBook").addEventListener("click", procBook);
+
+document.getElementById("btnBorraUser").addEventListener("click", aliasResetUsuarios);
+document.getElementById("btnBorraBook").addEventListener("click", aliasResetLibros);
+
+function aliasResetLibros() {
+	resetFormEvent("book_action", "FormLibros", "mensajeErrorLibro", false);
+}
+
+function aliasResetUsuarios() {
+	resetFormEvent("user_action", "FormUsuarios", "mensajeErrorUsuario", false);
+}
+	  
+function resetFormEvent(action, formId, msgId, evt) {
+  if (document.querySelector('input[name=' + action + ']')) {
+    document.querySelectorAll('input[name=' + action + ']').forEach((elem) => {
+  	  elem.checked = false;
+	  document.getElementById(formId).reset();
+	  document.getElementById(formId).style.opacity="0.3";
+	  disableEnableElements(elemForm(formId), true);
+	  if (evt) {
+	    elem.addEventListener("change", function(event) {
+		                                    var item = event.target.value;
+		                                    disableEnableElements(elemForm(formId), false);	
+		                                    document.getElementById(formId).style.opacity="1";
+		                                    document.getElementById(msgId).innerHTML = "";
+		                                    console.log(item);
+		                                });
+	  }
+    });
+  }
+}
+
+resetFormEvent("user_action", "FormUsuarios", "mensajeErrorUsuario", true);
+resetFormEvent("book_action", "FormLibros", "mensajeErrorLibro", true);
+
 function listSection(Section) {
   const nodoSection = document.getElementById(Section);
   const nodoArticle = nodoSection.children[1];
@@ -56,14 +93,11 @@ function carga(){
     listSection("Libros");
 }
 
-document.getElementById("btnConfirmaUser").addEventListener("click", procUser);
-
-document.getElementById("btnConfirmaBook").addEventListener("click", procBook);
-
 function procUser() {
   var respuesta = {"msg": "", "sts": 0};
   var unUser = new User(0, "", "", "");
-  var objBtn;
+  var objBtn, msg;
+  msg = document.getElementById('mensajeErrorUsuario');
   unUser["Id"]         = document.getElementById("Usuario_Id").value;      
   unUser["NomApe"]     = document.getElementById("Usuario_NomApe").value;
   unUser["Direccion"]  = document.getElementById("Usuario_Direccion").value;
@@ -83,20 +117,23 @@ function procUser() {
 	  respuesta.sts = 1;
   }
   
-  document.getElementById('mensajeErrorUsuario').innerText = respuesta.msg;
+  msg.innerText = respuesta.msg;
   if (respuesta.sts == 0) {
+	msg.style.color = "white";
 	objBtn.checked = false;
-	document.getElementById("FormUsuarios").reset();
+	aliasResetUsuarios();
 //    delSection("Usuarios");
     listSection("Usuarios");
+  } else {
+	msg.style.color = "rgba(240, 7, 7, 0.74)";
   }
-  
 }
 
 function procBook() {
   var respuesta = {"msg": "", "sts": 0};
   var unBook = new Book(0, "", "", "", false);
-  var objBtn;
+  var objBtn, msg;
+  msg = document.getElementById('mensajeErrorLibro');
   unBook["Id"]         = document.getElementById("Libro_Id").value;
   unBook["Titulo"]     = document.getElementById("Libro_Titulo").value;
   unBook["Autor"]      = document.getElementById("Libro_Autor").value;
@@ -117,16 +154,17 @@ function procBook() {
 	  respuesta.sts = 1;
   }
   
-  document.getElementById('mensajeErrorLibro').innerText = respuesta.msg;
+  msg.innerText = respuesta.msg;
   if (respuesta.sts == 0) {
+	msg.style.color = "white";
 	objBtn.checked = false;
-	document.getElementById("FormLibros").reset();
+	aliasResetLibros();
 //    delSection("Libros");
     listSection("Libros");
+  } else {
+	msg.style.color = "rgba(240, 7, 7, 0.74)";
   }
-  
 }
-
 
 
 setTimeout(carga, 500);

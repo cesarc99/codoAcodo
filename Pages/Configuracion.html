@@ -6,7 +6,7 @@
     <title>Configuración</title>
 	<link rel="icon" type="image/x-icon" href="/src/images/favicon.ico">
     <link rel="stylesheet" href="../CSS/Base.css">
-    <link rel="stylesheet" href="../CSS/Configuracion.css">
+    <link rel="stylesheet" href="../CSS/ConfigConsulta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="../JavaScript/Base.js"></script>
 </head>
@@ -64,7 +64,7 @@
                             <label for="upd_U">Modificación</label>
 							</div>
 							</div>
-                        <form id="FormUsuarios">
+                        <form id="FormUsuarios" style="opacity: 0.3;">
 
                             <label for="Usuario_Id">Código de Usuario</label>
                             <input id="Usuario_Id" name="Usuario_Id" type="text">
@@ -78,8 +78,9 @@
                             <label for="Usuario_Contacto">Contacto</label>
                             <input id="Usuario_Contacto" name="Usuario_Contacto" type="text">
 		        
-                            <input class="button" type="reset"  value="Borrar">
+                            <input id="btnBorraUser" class="button" type="button"  value="Borrar">
                             <input id="btnConfirmaUser" class="button" type="button" value="Confirmar">
+
                         </form>
                     </article>
                 </section>
@@ -117,7 +118,7 @@
                             <label for="upd_B">Modificación</label>
 							</div>
 							</div>
-                        <form id="FormLibros">
+                        <form id="FormLibros" style="opacity: 0.3">
                             <label for="Libro_Id">Código de Libro</label>
                             <input id="Libro_Id" name="Libro_Id" type="text">
 		        
@@ -130,7 +131,7 @@
                             <label for="Libro_Ubicacion">Ubicación en la Bilioteca</label>
                             <input id="Libro_Ubicacion" name="Libro_Ubicacion" type="text">
 		        
-                            <input class="button" type="reset"  value="Borrar">
+                            <input id="btnBorraBook" class="button" type="button"  value="Borrar">
                             <input id="btnConfirmaBook" class="button" type="button" value="Confirmar">
                         </form>
                     </article>

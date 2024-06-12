@@ -5,27 +5,22 @@ var Books = [], unBook;
 function listSection(Section) {
   const nodoSection = document.getElementById(Section);
   const nodoArticle = nodoSection.children[1];
-  var nodoBook;
+  var nodoBook, tableBooksD, tableBooksP;
+  tableBooks = "<table><tr><th>Código</th><th>Título</th><th>Ubicación</th></tr>";
   for (let i = 0; i < Books.length; i++){
     unBook = Books[i];
 	if (unBook["Disponible"]){
       if (Section == "Disponibles") {
-        nodoBook = nodoArticle.children[0].cloneNode(true);
-        nodoBook.children[0].innerText = unBook["Id"];
-        nodoBook.children[1].innerText = unBook["Titulo"];
-        nodoBook.children[2].innerText = unBook["Ubicacion"];
-        nodoArticle.appendChild(nodoBook);
+	    tableBooks += "<tr><td>" + unBook["Id"] + "</td><td>" + unBook["Titulo"] + "</td><td>" +  unBook["Ubicacion"] + "</td></tr>";
 	  }
 	} else {
       if (Section == "Prestados") {
-        nodoBook = nodoArticle.children[0].cloneNode(true);
-        nodoBook.children[0].innerText = unBook["Id"];
-        nodoBook.children[1].innerText = unBook["Titulo"];
-        nodoBook.children[2].innerText = unBook["Ubicacion"];
-        nodoArticle.appendChild(nodoBook);
+	    tableBooks += "<tr><td>" + unBook["Id"] + "</td><td>" + unBook["Titulo"] + "</td><td>" +  unBook["Ubicacion"] + "</td></tr>";
 	  }		
 	}	
   }
+  tableBooks += "</table>";
+  nodoArticle.innerHTML = tableBooks;  
 }
 
 function carga(){
@@ -35,5 +30,4 @@ function carga(){
 }
 
 setTimeout(carga, 500);
-
 
