@@ -34,7 +34,6 @@ function carga(){
 }
 
 function DevolucionPrestamo(elem){
-	alert(elem.cells[0].textContent);
 	var respuesta = {"msg": "", "sts": 0, "devolucion": false};
 	var msgPrestamo = document.getElementById('mensajeErrorPrestamo');
 	var msgDevolucion = document.getElementById('mensajeErrorDevolucion');
@@ -51,11 +50,11 @@ function DevolucionPrestamo(elem){
 	  msgDevolucion.style.color = "white";
 	  listSection("Libros_Prestamo");
       listSection("Libros_Devolucion");
-	else {
+	} else {
 	  msgPrestamo.style.color = "rgba(240, 7, 7, 0.74)";
 	  msgDevolucion.style.color = "rgba(240, 7, 7, 0.74)";
 	}
-  }
-}
+ }
+
 
 setTimeout(carga, 500);
