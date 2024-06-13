@@ -5,37 +5,26 @@ var Books = [], unBook;
 function listSection(Section) {
   const nodoSection = document.getElementById(Section);
   const nodoArticle = nodoSection.children[1];
-  var nodoBook;
+  var nodoBook, tableBooks;
+  tableBooks = "<table><tr><th>Código</th><th>Título</th><th>Ubicación</th></tr>";
   for (let i = 0; i < Books.length; i++){
     unBook = Books[i];
 	if (unBook["Disponible"]){
       if (Section == "Libros_Prestamo") {
-        nodoBook = nodoArticle.children[0].cloneNode(true);
-        nodoBook.children[0].innerText = unBook["Id"];
-        nodoBook.children[1].innerText = unBook["Titulo"];
-        nodoBook.children[2].innerText = unBook["Ubicacion"];
-		nodoBook.children[3].innerHTML = '<i class="fa-solid fa-arrow-right-from-bracket" onclick="DevolucionPrestamo(this.parentElement.parentElement)"></i>'
-        nodoArticle.appendChild(nodoBook);
+	    tableBooks += "<tr><td>" + unBook["Id"] + "</td><td>" + unBook["Titulo"] + "</td><td>" +  unBook["Ubicacion"] + "</td><td>";
+	    tableBooks += '<i class="fa-solid fa-arrow-right-from-bracket" onclick="DevolucionPrestamo(this.parentElement.parentElement)"></i>';
+	    tableBooks += "</td></tr>";
 	  }
 	} else {
       if (Section == "Libros_Devolucion") {
-        nodoBook = nodoArticle.children[0].cloneNode(true);
-        nodoBook.children[0].innerText = unBook["Id"];
-        nodoBook.children[1].innerText = unBook["Titulo"];
-        nodoBook.children[2].innerText = unBook["Ubicacion"];
-		nodoBook.children[3].innerHTML = '<i class="fa-solid fa-arrow-right-to-bracket" onclick="DevolucionPrestamo(this.parentElement.parentElement)"></i>'
-        nodoArticle.appendChild(nodoBook);
+	    tableBooks += "<tr><td>" + unBook["Id"] + "</td><td>" + unBook["Titulo"] + "</td><td>" +  unBook["Ubicacion"] + "</td><td>";
+	    tableBooks += '<i class="fa-solid fa-arrow-right-from-bracket" onclick="DevolucionPrestamo(this.parentElement.parentElement)"></i>';
+	    tableBooks += "</td></tr>";
 	  }		
 	}	
   }
-}
-
-function delSection(Section) {
-  const nodoSection = document.getElementById(Section);
-  const nodoArticle = nodoSection.children[1];
-  while (nodoArticle.children.length > 1) {
-    nodoArticle.removeChild(nodoArticle.lastChild);
-  }
+  tableBooks += "</table>";
+  nodoArticle.innerHTML = tableBooks;  
 }
 
 function carga(){
@@ -45,22 +34,28 @@ function carga(){
 }
 
 function DevolucionPrestamo(elem){
+	alert(elem.cells[0].textContent);
 	var respuesta = {"msg": "", "sts": 0, "devolucion": false};
-	respuesta = stsDevPres(Books, "Book", elem.children[0].innerText);
+	var msgPrestamo = document.getElementById('mensajeErrorPrestamo');
+	var msgDevolucion = document.getElementById('mensajeErrorDevolucion');
+	respuesta = stsDevPres(Books, "Book", elem.cells[0].textContent);
 	if (respuesta.devolucion) {
-      document.getElementById('mensajeErrorPrestamo').innerText = respuesta.msg;
-      document.getElementById('mensajeErrorDevolucion').innerText = "";
+      msgPrestamo.innerText = respuesta.msg;
+      msgDevolucion.innerText = "";
 	} else {
-      document.getElementById('mensajeErrorPrestamo').innerText = "";
-      document.getElementById('mensajeErrorDevolucion').innerText = respuesta.msg;
+      msgPrestamo.innerText = "";
+      msgDevolucion.innerText = respuesta.msg;
 	}
 	if (respuesta.sts == 0) {
-      delSection("Libros_Prestamo");
-      delSection("Libros_Devolucion");
+	  msgPrestamo.style.color = "white";
+	  msgDevolucion.style.color = "white";
 	  listSection("Libros_Prestamo");
       listSection("Libros_Devolucion");
+	else {
+	  msgPrestamo.style.color = "rgba(240, 7, 7, 0.74)";
+	  msgDevolucion.style.color = "rgba(240, 7, 7, 0.74)";
+	}
   }
-
 }
 
 setTimeout(carga, 500);

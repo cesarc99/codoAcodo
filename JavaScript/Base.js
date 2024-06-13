@@ -93,16 +93,17 @@ function add(tabObj, tipoObj, clase) {
 function stsDevPres(tabObj, tipoObj, clave) {
   var respuesta = {"msg": "", "sts": 0, "devolucion": false};
   var idx = tabObj.findIndex(e => e.Id == clave);
-  var unObj, txt;
+  var unObj, txt, wClase;
   if (idx > -1) {
-    unObj = tabObj[idx];
+    unObj = tabObj[idx];	
 	sts = unObj["Disponible"] ? "Préstamo exitoso de " : "Devolución exitosa de ";
 	respuesta.devolucion = unObj["Disponible"] ? true : false;
 	unObj["Disponible"] = !unObj["Disponible"];
 	tabObj[idx] = unObj;
     txt = Object.values(unObj).toString();
-    txt = txt.replaceAll(",",", ");
-    respuesta.msg = sts + tipoObj + ": " + txt;
+	txt = txt.split(",");
+	wClase = new Book(txt[0], txt[1], txt[2], txt[3], txt[4]);
+    respuesta.msg = sts + tipoObj + ": " + wClase.toStringArray();
     respuesta.sts = 0;
   } else {
     respuesta.msg = "No existe " + tipoObj + " con clave: " + clave;

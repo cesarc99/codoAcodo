@@ -5,7 +5,7 @@ var Books = [], unBook;
 function listSection(Section) {
   const nodoSection = document.getElementById(Section);
   const nodoArticle = nodoSection.children[1];
-  var nodoBook, tableBooksD, tableBooksP;
+  var nodoBook, tableBooks;
   tableBooks = "<table><tr><th>Código</th><th>Título</th><th>Ubicación</th></tr>";
   for (let i = 0; i < Books.length; i++){
     unBook = Books[i];

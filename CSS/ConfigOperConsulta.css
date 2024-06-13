@@ -15,7 +15,8 @@ tr:nth-child(even) {
     background-color: rgb(115, 115, 235);
 }
 
-#mensajeErrorLibro, #mensajeErrorUsuario {
+#mensajeErrorLibro, #mensajeErrorUsuario,
+#mensajeErrorPrestamo, #mensajeErrorDevolucion {
 	font-weight: bold;
     text-align: center;
 }
