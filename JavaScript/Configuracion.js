@@ -2,11 +2,15 @@
 
 var Books = [], unBook, Users = [], unUser;
 
-document.getElementById("btnConfirmaUser").addEventListener("click", procUser);
+// document.getElementById("btnConfirmaUser").addEventListener("click", procUser);
+document.getElementById("btnConfirmaUser").addEventListener("click", procUserApi);
 document.getElementById("btnConfirmaBook").addEventListener("click", procBook);
 
 document.getElementById("btnBorraUser").addEventListener("click", aliasResetUsuarios);
 document.getElementById("btnBorraBook").addEventListener("click", aliasResetLibros);
+
+document.getElementById("Usuario_Id").onchange = function() {dataById(event)};
+document.getElementById("Libro_Id").onchange = function() {dataById(event)};
 
 function aliasResetLibros() {
 	resetFormEvent("book_action", "FormLibros", "mensajeErrorLibro", false);
@@ -19,14 +23,16 @@ function aliasResetUsuarios() {
 function resetFormEvent(action, formId, msgId, evt) {
   document.getElementById(formId).reset();
   document.getElementById(formId).style.opacity="0.3";
-  disableEnableElements(elemForm(formId), true);
+  disableEnableElements(elemForm(formId), true, false);
   if (document.querySelector('input[name=' + action + ']')) {
     document.querySelectorAll('input[name=' + action + ']').forEach((elem) => {
   	  elem.checked = false;
 	  if (evt) {
 	    elem.addEventListener("change", function(event) {
 		                                    var item = event.target.value;
-		                                    disableEnableElements(elemForm(formId), false, ((item == "del_U" || item == "del_B") ? true : false));	
+											disableEnableElements(elemForm(formId), true, false);
+		                                    disableEnableElements(elemForm(formId), false, ((item == "del_U" || item == "del_B" ||
+											                                                 item == "upd_U" || item == "upd_B") ? true : false));	
 		                                    document.getElementById(formId).style.opacity="1";
 		                                    document.getElementById(msgId).innerHTML = "";
 		                                });
@@ -128,6 +134,48 @@ function procUser() {
   }
 }
 
+function procUserApi() {
+  var respuesta = {"msg": "", "sts": 0};
+  var unUser = new User(0, "", "", "");
+  var objBtn, msg;
+  msg = document.getElementById('mensajeErrorUsuario');
+  unUser["Id"]         = document.getElementById("Usuario_Id").value;
+  if (document.getElementById('del_U').checked || document.getElementById('upd_U').checked) {
+	alert(unUser["Id"]);
+  }	
+/*
+  unUser["NomApe"]     = document.getElementById("Usuario_NomApe").value;
+  unUser["Direccion"]  = document.getElementById("Usuario_Direccion").value;
+  unUser["Contacto"]   = document.getElementById("Usuario_Contacto").value;
+    
+  if (document.getElementById('add_U').checked) {
+	  objBtn = document.getElementById('add_U');
+	  respuesta = add(Users, "User", unUser);
+  } else if (document.getElementById('del_U').checked) {
+	  objBtn = document.getElementById('del_U');
+	  respuesta = del(Users, "User", unUser["Id"]);
+  } else if (document.getElementById('upd_U').checked) {
+	  objBtn = document.getElementById('upd_U');
+	  respuesta = upd(Users, "User", unUser);
+  } else {
+	  respuesta.msg = "Debe seleccionar una operación (A, B o M)";
+	  respuesta.sts = 1;
+  }
+  
+  msg.innerText = respuesta.msg;
+  if (respuesta.sts == 0) {
+	msg.style.color = "white";
+	objBtn.checked = false;
+	aliasResetUsuarios();
+//    delSection("Usuarios");
+    listSection("Usuarios");
+  } else {
+	msg.style.color = "rgba(240, 7, 7, 0.74)";
+  }
+*/
+}
+
+
 function procBook() {
   var respuesta = {"msg": "", "sts": 0};
   var unBook = new Book(0, "", "", "", false);
@@ -164,6 +212,5 @@ function procBook() {
 	msg.style.color = "rgba(240, 7, 7, 0.74)";
   }
 }
-
 
 setTimeout(carga, 500);
