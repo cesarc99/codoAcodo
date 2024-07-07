@@ -6,8 +6,8 @@
     <title>Biblioteca</title>
 	<link rel="icon" type="image/x-icon" href="/src/images/favicon.ico">
     <link rel="stylesheet" href="CSS/Base.css">
+	<link rel="stylesheet" href="CSS/Modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<!--    <script src="../JavaScript/Contactanos.js"></script> -->
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
             </a>
         </div>
         <h1>BIBLIOTECA ONLINE CIENCIA Y SUDOR</h1>
-        <a id="Login" class="button" href="Pages/Consultas.html">login</a>
+		<input id="btnLogin" class="button" type="button" value="Login">
    </header>
     <main>
         <h2 class="titulo">Quienes Somos</h2>
@@ -93,6 +93,32 @@
 
     <p >Biblioteca Online Ciencia y Sudor 2024 - Todos los derechos reservados</p>
     </footer>
-    
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	    <article class="formulario"><br>
+			<form id="FormLogin">
+	
+				<label for="Usuario_Id">Código de Usuario</label>
+				<input id="Usuario_Id" name="Usuario_Id" type="text">
+			
+				<label for="Usuario_Password">Password</label>
+				<input id="Usuario_Password" name="Usuario_Password" type="password">
+				<span>&nbsp;</span>
+				<input id="btnIngresar" class="button" type="button" value="Ingresar">
+	
+			</form>
+			<p id="mensajeErrorUsuario" style="text-align: center;font-weight: bold;color: red;"></p>
+		</article>
+  </div>
+</div>
+<script src="JavaScript/Base.js"></script>
+<script src="JavaScript/Login.js"></script>
 </body>
 </html>
+
+  

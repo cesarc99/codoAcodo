@@ -25,6 +25,23 @@ class User {
   }
 }
 
+class UserAccess {
+  constructor(Id, Password) {
+    this.Id        = Id;       
+    this.Password  = Password;   
+  }
+  toStringArray(masterPassword) {
+	if (masterPassword == "MonsterInc") {
+		return "[ " + this.Id + ", " + this.Password + " ]";
+	} else {
+		return "[ " + this.Id + ", " + "No autorizado" + " ]";
+	}
+  }
+  accessControl(Pass) {
+    return (Pass == this.Password); 
+  }
+}
+
 // estas son las funciones del (Baja), upd (modificacion), add (Alta)
 // sirven para cualquier coleccion de datos, 
 // para que funcione la clave de todas las clases debe ser .Id
@@ -121,18 +138,26 @@ async function getDatos(file, destino) {
   .then(data => {
     if (destino == "libros") {
       Books = data;
-    } else {
+    } else if (destino == "usuarios") {
       Users = data;
-    }
+    } else {
+	  Accesses = data;
+	}
   }
   )
   .catch(error => console.log("Ocurrió un error! " + destino + " " + error));
 }
 
-function disableEnableElements(elems, boolValue){
-  for (elem of elems){
-	  document.getElementById(elem).disabled = boolValue;
-  }
+function disableEnableElements(elems, boolValue, del){
+	if (del) {
+		document.getElementById(elems[0]).disabled = boolValue;
+		document.getElementById(elems[4]).disabled = boolValue;
+		document.getElementById(elems[5]).disabled = boolValue;
+	} else {
+      for (elem of elems){
+    	  document.getElementById(elem).disabled = boolValue;
+      } 	
+	}
 }
 
 function elemForm(formId) {

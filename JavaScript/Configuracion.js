@@ -17,19 +17,18 @@ function aliasResetUsuarios() {
 }
 	  
 function resetFormEvent(action, formId, msgId, evt) {
+  document.getElementById(formId).reset();
+  document.getElementById(formId).style.opacity="0.3";
+  disableEnableElements(elemForm(formId), true);
   if (document.querySelector('input[name=' + action + ']')) {
     document.querySelectorAll('input[name=' + action + ']').forEach((elem) => {
   	  elem.checked = false;
-	  document.getElementById(formId).reset();
-	  document.getElementById(formId).style.opacity="0.3";
-	  disableEnableElements(elemForm(formId), true);
 	  if (evt) {
 	    elem.addEventListener("change", function(event) {
 		                                    var item = event.target.value;
-		                                    disableEnableElements(elemForm(formId), false);	
+		                                    disableEnableElements(elemForm(formId), false, ((item == "del_U" || item == "del_B") ? true : false));	
 		                                    document.getElementById(formId).style.opacity="1";
 		                                    document.getElementById(msgId).innerHTML = "";
-		                                    console.log(item);
 		                                });
 	  }
     });
