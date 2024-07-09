@@ -1,6 +1,7 @@
 // definimos las coleccion como Array y la variable que va a contener una clase
 
-var Books = [], unBook, Users = [], unUser;
+var Books = [], unBook, Users = [], unUser, stepProcUserApi = 0;
+var URL_BASE = "http://localhost:5000";
 
 // document.getElementById("btnConfirmaUser").addEventListener("click", procUser);
 document.getElementById("btnConfirmaUser").addEventListener("click", procUserApi);
@@ -8,9 +9,6 @@ document.getElementById("btnConfirmaBook").addEventListener("click", procBook);
 
 document.getElementById("btnBorraUser").addEventListener("click", aliasResetUsuarios);
 document.getElementById("btnBorraBook").addEventListener("click", aliasResetLibros);
-
-document.getElementById("Usuario_Id").onchange = function() {dataById(event)};
-document.getElementById("Libro_Id").onchange = function() {dataById(event)};
 
 function aliasResetLibros() {
 	resetFormEvent("book_action", "FormLibros", "mensajeErrorLibro", false);
@@ -30,9 +28,9 @@ function resetFormEvent(action, formId, msgId, evt) {
 	  if (evt) {
 	    elem.addEventListener("change", function(event) {
 		                                    var item = event.target.value;
-											disableEnableElements(elemForm(formId), true, false);
+											                  disableEnableElements(elemForm(formId), true, false);
 		                                    disableEnableElements(elemForm(formId), false, ((item == "del_U" || item == "del_B" ||
-											                                                 item == "upd_U" || item == "upd_B") ? true : false));	
+											                                                                   item == "upd_U" || item == "upd_B") ? true : false));	
 		                                    document.getElementById(formId).style.opacity="1";
 		                                    document.getElementById(msgId).innerHTML = "";
 		                                });
@@ -93,9 +91,14 @@ function delSection(Section) {
 
 function carga(){
 	getDatos("books.db", "libros");
-	getDatos("users.db", "usuarios");
-	listSection("Usuarios");
-    listSection("Libros");
+//	getDatos("users.db", "usuarios");
+  var apiCall = "/api/users/list/";
+  fetchData(URL_BASE + apiCall, "GET", (data) => {
+      Users = data;
+      listSection("Usuarios");
+    }
+  );
+  listSection("Libros");
 }
 
 function procUser() {
@@ -137,42 +140,85 @@ function procUser() {
 function procUserApi() {
   var respuesta = {"msg": "", "sts": 0};
   var unUser = new User(0, "", "", "");
-  var objBtn, msg;
+  var objBtn, msg, apiCall;
   msg = document.getElementById('mensajeErrorUsuario');
-  unUser["Id"]         = document.getElementById("Usuario_Id").value;
-  if (document.getElementById('del_U').checked || document.getElementById('upd_U').checked) {
-	alert(unUser["Id"]);
-  }	
-/*
+  unUser["Id"] = document.getElementById("Usuario_Id").value;
   unUser["NomApe"]     = document.getElementById("Usuario_NomApe").value;
   unUser["Direccion"]  = document.getElementById("Usuario_Direccion").value;
   unUser["Contacto"]   = document.getElementById("Usuario_Contacto").value;
+  if (stepProcUserApi == 0) {
+    stepProcUserApi = 1;
+    if (document.getElementById('del_U').checked || document.getElementById('upd_U').checked) {
+      apiCall = "/api/users/fetch/" + unUser["Id"];
+      fetchData(URL_BASE + apiCall, "GET", (data) => {
+          if (data["sts"]) {
+            respuesta = data;
+          } else {
+            document.getElementById("Usuario_NomApe").value     = data["NomApe"];
+            document.getElementById("Usuario_Direccion").value  = data["Direccion"];
+            document.getElementById("Usuario_Contacto").value   = data["Contacto"];
+            if (document.getElementById('upd_U').checked){
+              disableEnableElements(elemForm("FormUsuarios"), false, false);
+            }
+          }
+        }
+      );
+      if (respuesta.sts == 0){
+        return;  
+      }
+    }
+  }
+  stepProcUserApi = 0;
+  if (respuesta.sts == 0){
+    if (document.getElementById('add_U').checked){
+      objBtn = document.getElementById('add_U');
+      
+      var apiCall = "/api/users/create/";
+      fetchData(URL_BASE + apiCall, "POST", (data) => {
+          respuesta = data;
+          message();
+        },
+        unUser
+      );
     
-  if (document.getElementById('add_U').checked) {
-	  objBtn = document.getElementById('add_U');
-	  respuesta = add(Users, "User", unUser);
-  } else if (document.getElementById('del_U').checked) {
-	  objBtn = document.getElementById('del_U');
-	  respuesta = del(Users, "User", unUser["Id"]);
-  } else if (document.getElementById('upd_U').checked) {
-	  objBtn = document.getElementById('upd_U');
-	  respuesta = upd(Users, "User", unUser);
-  } else {
-	  respuesta.msg = "Debe seleccionar una operación (A, B o M)";
-	  respuesta.sts = 1;
+    } else if (document.getElementById('del_U').checked){
+      objBtn = document.getElementById('del_U');
+
+      var apiCall = "/api/users/delete/"  + unUser["Id"];
+      fetchData(URL_BASE + apiCall, "DELETE", (data) => {
+          respuesta = data;
+          message();
+        }
+      );
+
+    } else if (document.getElementById('upd_U').checked){
+      objBtn = document.getElementById('upd_U');
+
+      var apiCall = "/api/users/update/"  + unUser["Id"];
+      fetchData(URL_BASE + apiCall, "PUT", (data) => {
+          respuesta = data;
+          message();
+        },
+        unUser
+      );
+
+    } else {
+	    respuesta.msg = "Debe seleccionar una operación (A, B o M)";
+	    respuesta.sts = 1;
+    }
   }
-  
-  msg.innerText = respuesta.msg;
-  if (respuesta.sts == 0) {
-	msg.style.color = "white";
-	objBtn.checked = false;
-	aliasResetUsuarios();
-//    delSection("Usuarios");
-    listSection("Usuarios");
-  } else {
-	msg.style.color = "rgba(240, 7, 7, 0.74)";
+
+  function message() {
+    msg.innerText = respuesta.msg;
+    if (respuesta.sts == 0) {
+      msg.style.color = "white";
+      objBtn.checked = false;
+      aliasResetUsuarios();
+      carga();
+    } else {
+      msg.style.color = "rgba(240, 7, 7, 0.74)";
+    }  
   }
-*/
 }
 
 

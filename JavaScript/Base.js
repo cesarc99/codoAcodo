@@ -172,7 +172,7 @@ function elemForm(formId) {
   return arrId;
 }
 
-function  fetchData(url, method, callback, data_request = null) {
+function fetchData(url, method, callback, data_request = null) {
   const options = {
     method: method,
     headers: {

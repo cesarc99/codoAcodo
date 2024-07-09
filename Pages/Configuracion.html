@@ -153,8 +153,13 @@
     <script>
       if (document.hasFocus()) {
         getDatos("books.db", "libros");
-        getDatos("users.db", "usuarios");
-        listSection("Usuarios");
+//        getDatos("users.db", "usuarios");
+        var apiCall = "/api/users/list/";
+        fetchData(URL_BASE + apiCall, "GET", (data) => {
+                Users = data;
+                listSection("Usuarios");
+            }
+        );
         listSection("Libros");
 	  }
 	</script>	
